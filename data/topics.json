@@ -1,0 +1,11 @@
+{
+  "categories": ["All", "Mathematics", "Physics", "Economics", "Technology"],
+  "topics": [
+    {"id":"curvature","title":"Curvature","category":"Mathematics","description":"Understand how quickly a curve changes direction, from intuition to radius-of-curvature formulas.","icon":"∿","type":"Visual lesson","readTime":"8 min","tags":["calculus","geometry","visual"]},
+    {"id":"expected-value","title":"Expected Value","category":"Mathematics","description":"Build the idea of E(X) from weighted outcomes, then connect it to variance and E(X²).","icon":"E(X)","type":"Concept guide","readTime":"7 min","tags":["probability","statistics"]},
+    {"id":"newton-laws","title":"Newton’s Laws","category":"Physics","description":"See force, mass and acceleration as one connected model rather than three isolated statements.","icon":"F=ma","type":"Storyboard","readTime":"9 min","tags":["mechanics","motion"]},
+    {"id":"demand","title":"Demand & Value","category":"Economics","description":"Explore why people buy, what shifts demand and how markets translate needs into prices.","icon":"D","type":"Guide","readTime":"10 min","tags":["microeconomics","markets"]},
+    {"id":"apis","title":"APIs Explained","category":"Technology","description":"A visual guide to requests, responses, endpoints, authentication and real application data flows.","icon":"{ }","type":"Visual guide","readTime":"6 min","tags":["programming","web"]},
+    {"id":"sequences","title":"AP & GP Summation","category":"Mathematics","description":"Turn arithmetic and geometric series into patterns you can see, derive and remember.","icon":"Σ","type":"Formula lab","readTime":"8 min","tags":["sequences","algebra"]}
+  ]
+}

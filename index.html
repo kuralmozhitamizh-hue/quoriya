@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quoriya — a visual knowledge platform for learning, understanding and exploring ideas." />
+  <meta name="theme-color" content="#102A43" />
+  <title>Quoriya — Learn. Explore. Understand.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Quoriya home">
+        <span class="brand-mark">Q</span>
+        <span>Quoriya</span>
+      </a>
+
+      <form class="global-search" id="searchForm" role="search">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Search topics, formulas, notes, ideas…" />
+        <kbd>Ctrl K</kbd>
+      </form>
+
+      <nav class="header-actions" aria-label="Primary navigation">
+        <a href="#explore">Explore</a>
+        <a href="#saved">Saved</a>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle dark mode">☾</button>
+        <button class="menu-btn" id="menuToggle" type="button" aria-label="Open menu">☰</button>
+      </nav>
+    </header>
+
+    <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="#explore">Explore</a>
+      <a href="#saved">Saved</a>
+      <a href="admin.html">Content Studio</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">A knowledge system for curious minds</span>
+          <h1>Learn it.<br><em>See it.</em> Understand it.</h1>
+          <p>Explore ideas through clear explanations, visual stories, formulas, notes, media and connected topics — all in one organized place.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#explore">Start exploring <span>→</span></a>
+            <a class="btn btn-ghost" href="admin.html">Open Content Studio</a>
+          </div>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <div class="orbit-card card-a"><span>∫</span><small>Formula</small></div>
+          <div class="orbit-card card-b"><span>◉</span><small>Visual</small></div>
+          <div class="orbit-card card-c"><span>▶</span><small>Media</small></div>
+          <div class="orbit-core">Q</div>
+        </div>
+      </section>
+
+      <section class="section" id="explore">
+        <div class="section-heading">
+          <div><span class="eyebrow">Explore</span><h2>Find something worth knowing.</h2></div>
+          <div class="filter-row" id="categoryFilters"></div>
+        </div>
+        <div class="search-results" id="searchResults" hidden></div>
+        <div class="topic-grid" id="topicGrid"></div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <span class="eyebrow">Learning paths</span>
+          <h2>Follow ideas, not just pages.</h2>
+          <p class="section-lead">Quoriya connects concepts so you can move from a question to the underlying idea, then to formulas, examples and deeper topics.</p>
+        </div>
+        <div class="path-list" id="pathList"></div>
+      </section>
+
+      <section class="section saved-section" id="saved">
+        <div class="section-heading"><div><span class="eyebrow">Your library</span><h2>Saved for later.</h2></div></div>
+        <div class="saved-grid" id="savedGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div><span class="brand-mark small">Q</span><strong>Quoriya</strong><p>Learn. Explore. Understand.</p></div>
+      <div class="footer-links"><a href="#explore">Explore</a><a href="admin.html">Content Studio</a><a href="#">About</a></div>
+      <small>© <span id="year"></span> Quoriya</small>
+    </footer>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

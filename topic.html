@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quoriya topic reader" />
+  <meta name="theme-color" content="#102A43" />
+  <title>Topic — Quoriya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .reader-shell{max-width:1180px;margin:0 auto;padding:40px 28px 90px}
+    .reader-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}
+    .back-link{color:inherit;text-decoration:none;font-weight:700}
+    .reader-hero{padding:42px;border:1px solid var(--border);border-radius:32px;background:linear-gradient(135deg,rgba(26,115,232,.10),rgba(255,255,255,.75));box-shadow:var(--shadow);margin-bottom:34px}
+    .dark .reader-hero{background:linear-gradient(135deg,rgba(45,127,245,.14),rgba(16,42,67,.45))}
+    .reader-kicker{color:var(--accent);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem}
+    .reader-title{font-family:Manrope,sans-serif;font-size:clamp(2.7rem,7vw,5.8rem);line-height:.98;letter-spacing:-.055em;margin:14px 0 18px;color:var(--ink)}
+    .reader-summary{max-width:780px;font-size:1.18rem;line-height:1.8;color:var(--muted)}
+    .reader-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+    .reader-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:34px;align-items:start}
+    .toc{position:sticky;top:20px;border:1px solid var(--border);border-radius:22px;padding:20px;background:var(--card)}
+    .toc strong{display:block;margin-bottom:12px}.toc a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;font-size:.94rem}.toc a:hover{color:var(--accent)}
+    .content-stack{min-width:0}.reader-section{margin-bottom:42px}.reader-section h2{font-family:Manrope,sans-serif;font-size:2rem;letter-spacing:-.03em;margin-bottom:12px}.reader-section p{font-size:1.05rem;line-height:1.85;color:var(--muted)}
+    .callout{padding:22px;border:1px solid var(--border);border-radius:20px;background:var(--card);margin:18px 0}.formula-card{font-size:1.35rem;font-family:Georgia,serif;text-align:center;overflow:auto}.formula-card code{font-family:Georgia,serif;font-size:1.4rem}.note{border-left:4px solid var(--accent)}
+    .carousel{position:relative;border:1px solid var(--border);border-radius:24px;overflow:hidden;background:var(--card)}.carousel-track{display:flex;transition:transform .35s ease}.slide{min-width:100%;padding:18px}.slide img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px}.slide-caption{padding:12px 4px;color:var(--muted)}.carousel-controls{display:flex;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--border)}
+    .media-card{border:1px solid var(--border);border-radius:24px;padding:20px;background:var(--card)}.media-card video,.media-card audio{width:100%;margin-top:12px;border-radius:14px}.media-placeholder{padding:34px;text-align:center;border:1px dashed var(--border);border-radius:18px;color:var(--muted)}
+    .problem{border:1px solid var(--border);border-radius:22px;padding:24px;background:var(--card)}.solution{margin-top:14px}.hint{margin-top:10px}.hint summary{cursor:pointer;font-weight:700;color:var(--accent)}
+    .related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.related-card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:20px;padding:20px;background:var(--card)}.related-card strong{display:block;margin-bottom:6px}
+    .reader-error{padding:60px 20px;text-align:center}.reader-error h1{font-family:Manrope,sans-serif}
+    @media(max-width:800px){.reader-shell{padding:24px 18px 70px}.reader-hero{padding:28px 22px;border-radius:24px}.reader-layout{grid-template-columns:1fr}.toc{position:static}.related-grid{grid-template-columns:1fr}.reader-title{font-size:3rem}}
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Quoriya home"><span class="brand-mark">Q</span><span>Quoriya</span></a>
+      <form class="global-search" id="searchForm" role="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="Search topics, formulas, notes, ideas…" /><kbd>Ctrl K</kbd></form>
+      <nav class="header-actions"><a href="index.html#explore">Explore</a><a href="index.html#saved">Saved</a><button class="icon-btn" id="themeToggle" type="button">☾</button><button class="menu-btn" id="menuToggle" type="button">☰</button></nav>
+    </header>
+    <aside class="mobile-menu" id="mobileMenu"><a href="index.html#explore">Explore</a><a href="index.html#saved">Saved</a><a href="admin.html">Content Studio</a></aside>
+
+    <main class="reader-shell" id="reader"></main>
+
+    <footer class="site-footer"><div><span class="brand-mark small">Q</span><strong>Quoriya</strong><p>Learn. Explore. Understand.</p></div><div class="footer-links"><a href="index.html#explore">Explore</a><a href="admin.html">Content Studio</a></div><small>© <span id="year"></span> Quoriya</small></footer>
+  </div>
+  <script src="js/topic.js"></script>
+</body>
+</html>

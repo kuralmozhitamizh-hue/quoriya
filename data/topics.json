@@ -1,11 +1,106 @@
 {
   "categories": ["All", "Mathematics", "Physics", "Economics", "Technology"],
   "topics": [
-    {"id":"curvature","title":"Curvature","category":"Mathematics","description":"Understand how quickly a curve changes direction, from intuition to radius-of-curvature formulas.","icon":"∿","type":"Visual lesson","readTime":"8 min","tags":["calculus","geometry","visual"]},
-    {"id":"expected-value","title":"Expected Value","category":"Mathematics","description":"Build the idea of E(X) from weighted outcomes, then connect it to variance and E(X²).","icon":"E(X)","type":"Concept guide","readTime":"7 min","tags":["probability","statistics"]},
-    {"id":"newton-laws","title":"Newton’s Laws","category":"Physics","description":"See force, mass and acceleration as one connected model rather than three isolated statements.","icon":"F=ma","type":"Storyboard","readTime":"9 min","tags":["mechanics","motion"]},
-    {"id":"demand","title":"Demand & Value","category":"Economics","description":"Explore why people buy, what shifts demand and how markets translate needs into prices.","icon":"D","type":"Guide","readTime":"10 min","tags":["microeconomics","markets"]},
-    {"id":"apis","title":"APIs Explained","category":"Technology","description":"A visual guide to requests, responses, endpoints, authentication and real application data flows.","icon":"{ }","type":"Visual guide","readTime":"6 min","tags":["programming","web"]},
-    {"id":"sequences","title":"AP & GP Summation","category":"Mathematics","description":"Turn arithmetic and geometric series into patterns you can see, derive and remember.","icon":"Σ","type":"Formula lab","readTime":"8 min","tags":["sequences","algebra"]}
+    {
+      "id": "curvature",
+      "title": "Curvature",
+      "category": "Mathematics",
+      "description": "Understand how quickly a curve changes direction, from intuition to radius-of-curvature formulas.",
+      "icon": "∿",
+      "type": "Visual lesson",
+      "readTime": "8 min",
+      "tags": ["calculus", "geometry", "visual"],
+      "related": ["sequences", "expected-value"],
+      "blocks": [
+        {"type":"text","title":"What is curvature?","paragraphs":["Curvature describes how quickly the direction of a moving point on a curve changes as the point travels along the curve.","A straight line has zero curvature because its direction does not change. A tightly bending curve has larger curvature."]},
+        {"type":"story","title":"Build the intuition","steps":[{"title":"Move along the curve","text":"Imagine a tiny arrow tangent to the curve. As the point moves, watch the arrow rotate."},{"title":"Measure the turning","text":"Compare the small change in tangent direction with the small distance travelled along the curve."},{"title":"Define curvature","text":"The ratio of turning angle to arc length approaches the curvature when the interval becomes extremely small."}]},
+        {"type":"formula","title":"Curvature formula","formula":"κ = dθ/ds = 1/ρ","explanation":"Here θ is the tangent angle, s is arc length, κ is curvature and ρ is the radius of curvature."},
+        {"type":"formula","title":"Cartesian form","formula":"κ = |y''| / (1 + (y')²)^(3/2)","explanation":"For a curve y = f(x), this form expresses curvature using derivatives with respect to x."},
+        {"type":"note","title":"Key idea","text":"Curvature is about change of direction, not simply how high or low the graph is."},
+        {"type":"problem","title":"Quick check","question":"What is the curvature of a straight line y = 3x + 2?","hint":"A straight line never changes its tangent direction.","solution":"The curvature is 0 because y'' = 0."}
+      ]
+    },
+    {
+      "id": "expected-value",
+      "title": "Expected Value",
+      "category": "Mathematics",
+      "description": "Build the idea of E(X) from weighted outcomes, then connect it to variance and E(X²).",
+      "icon": "E(X)",
+      "type": "Concept guide",
+      "readTime": "7 min",
+      "tags": ["probability", "statistics"],
+      "related": ["curvature", "sequences"],
+      "blocks": [
+        {"type":"text","title":"The central idea","paragraphs":["Expected value is the probability-weighted average of the possible values of a random variable.","It is not necessarily a value that the random variable can actually take. It represents the long-run average outcome of repeated trials."]},
+        {"type":"formula","title":"Discrete expected value","formula":"E(X) = Σ x·P(X = x)","explanation":"Multiply each possible outcome by its probability and add the results."},
+        {"type":"formula","title":"Variance connection","formula":"Var(X) = E(X²) − [E(X)]²","explanation":"This identity connects the second moment E(X²) with the square of the mean."},
+        {"type":"problem","title":"Quick check","question":"A fair die has outcomes 1,2,3,4,5,6. Find E(X).","hint":"All six outcomes have probability 1/6.","solution":"E(X)=(1+2+3+4+5+6)/6 = 21/6 = 3.5."}
+      ]
+    },
+    {
+      "id": "newton-laws",
+      "title": "Newton’s Laws",
+      "category": "Physics",
+      "description": "See force, mass and acceleration as one connected model rather than three isolated statements.",
+      "icon": "F=ma",
+      "type": "Storyboard",
+      "readTime": "9 min",
+      "tags": ["mechanics", "motion"],
+      "related": ["curvature"],
+      "blocks": [
+        {"type":"story","title":"Think of a moving object","steps":[{"title":"No net force","text":"If the net external force is zero, velocity remains constant."},{"title":"Apply a net force","text":"A non-zero net force changes velocity, producing acceleration."},{"title":"Change the mass","text":"For the same net force, greater mass means smaller acceleration."}]},
+        {"type":"formula","title":"Second law","formula":"F_net = ma","explanation":"Acceleration points in the direction of the net force and its magnitude is proportional to net force and inversely related to mass."},
+        {"type":"note","title":"Common mistake","text":"Do not use one individual force in F = ma when several forces act. Use the vector sum, the net force."}
+      ]
+    },
+    {
+      "id": "demand",
+      "title": "Demand & Value",
+      "category": "Economics",
+      "description": "Explore why people buy, what shifts demand and how markets translate needs into prices.",
+      "icon": "D",
+      "type": "Guide",
+      "readTime": "10 min",
+      "tags": ["microeconomics", "markets"],
+      "related": ["expected-value"],
+      "blocks": [
+        {"type":"text","title":"What demand means","paragraphs":["Demand is the quantity of a good or service that consumers are willing and able to buy at different prices during a given period.","A change in the good's own price generally causes movement along the demand curve. Changes in income, tastes, expectations and prices of related goods can shift the curve."]},
+        {"type":"note","title":"Demand is not just desire","text":"A person may want a product without having the willingness and ability to purchase it. Effective demand combines desire with purchasing power and willingness."},
+        {"type":"problem","title":"Quick check","question":"If the price of a product rises and everything else stays constant, what usually happens to quantity demanded?","hint":"Think about movement along the same demand curve.","solution":"Quantity demanded generally falls, assuming the ordinary downward-sloping demand relationship."}
+      ]
+    },
+    {
+      "id": "apis",
+      "title": "APIs Explained",
+      "category": "Technology",
+      "description": "A visual guide to requests, responses, endpoints, authentication and real application data flows.",
+      "icon": "{ }",
+      "type": "Visual guide",
+      "readTime": "6 min",
+      "tags": ["programming", "web"],
+      "related": ["newton-laws"],
+      "blocks": [
+        {"type":"story","title":"A request travels","steps":[{"title":"Client","text":"A browser or app sends a request to a server endpoint."},{"title":"Server","text":"The server validates the request, runs application logic and accesses data when needed."},{"title":"Response","text":"The server sends structured data, often JSON, back to the client."}]},
+        {"type":"note","title":"Production rule","text":"Never put private API keys or secrets directly in frontend JavaScript. Public clients can be inspected by anyone."},
+        {"type":"formula","title":"Typical API shape","formula":"Client → HTTPS request → API → data/service → JSON response","explanation":"The exact architecture varies, but this is a useful mental model for modern web applications."}
+      ]
+    },
+    {
+      "id": "sequences",
+      "title": "AP & GP Summation",
+      "category": "Mathematics",
+      "description": "Turn arithmetic and geometric series into patterns you can see, derive and remember.",
+      "icon": "Σ",
+      "type": "Formula lab",
+      "readTime": "8 min",
+      "tags": ["sequences", "algebra"],
+      "related": ["curvature", "expected-value"],
+      "blocks": [
+        {"type":"text","title":"Sequence versus series","paragraphs":["A sequence is an ordered list of terms. A series is the sum of terms from a sequence.","Arithmetic progressions change by a constant difference. Geometric progressions multiply by a constant ratio."]},
+        {"type":"formula","title":"Arithmetic progression","formula":"S_n = n/2 [2a + (n−1)d]","explanation":"a is the first term, d is the common difference and n is the number of terms."},
+        {"type":"formula","title":"Geometric progression","formula":"S_n = a(r^n − 1)/(r − 1), r ≠ 1","explanation":"a is the first term and r is the common ratio."},
+        {"type":"problem","title":"Quick check","question":"Find the sum of 2 + 5 + 8 + 11 + 14.","hint":"Identify a, d and n, then use the AP sum formula.","solution":"a=2, d=3, n=5. S₅ = 5/2[4+12] = 40."}
+      ]
+    }
   ]
 }

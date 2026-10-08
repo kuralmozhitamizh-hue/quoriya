@@ -1,0 +1,27 @@
+{
+  "paths": [
+    {
+      "number": "01",
+      "title": "Differential Calculus",
+      "description": "Build a strong understanding of derivatives, curves and geometric change.",
+      "topics": [
+        "functions",
+        "limits",
+        "differentiation",
+        "tangent-normal",
+        "curvature",
+        "radius-of-curvature"
+      ]
+    },
+    {
+      "number": "02",
+      "title": "Sequences & Series",
+      "description": "Move from sequences to summation, convergence and deeper patterns.",
+      "topics": [
+        "sequences",
+        "arithmetic-progression",
+        "geometric-progression"
+      ]
+    }
+  ]
+}

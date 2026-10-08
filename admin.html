@@ -1,243 +1,541 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Quoriya Content Studio">
-  <meta name="theme-color" content="#102A43">
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Quoriya Content Studio"
+  >
+
   <title>Content Studio — Quoriya</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    .studio{max-width:1120px;margin:auto;padding:42px 24px 90px}
-    .studio-kicker{color:var(--accent);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.78rem}
-    .studio h1{font-family:Manrope,sans-serif;font-size:clamp(3rem,8vw,6rem);line-height:.95;letter-spacing:-.055em;margin:12px 0 18px}
-    .studio-lead{max-width:780px;color:var(--muted);font-size:1.1rem;line-height:1.8}
-    .studio-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:22px;margin-top:30px}
-    .panel{border:1px solid var(--border);background:var(--card);border-radius:26px;padding:24px;box-shadow:var(--shadow)}
-    .panel h2{font-family:Manrope,sans-serif;margin:0 0 18px}
-    .field{margin:0 0 17px}.field label{display:block;font-weight:700;margin-bottom:7px}
-    .field input,.field textarea,.field select{width:100%;box-sizing:border-box;border:1px solid var(--border);border-radius:14px;background:var(--bg);color:var(--ink);padding:13px 14px;font:inherit}
-    .field textarea{min-height:105px;resize:vertical}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.toolbar button{cursor:pointer}
-    .block{border:1px solid var(--border);border-radius:20px;padding:18px;margin-top:14px;background:var(--bg)}
-    .block-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-    .block-head strong{font-family:Manrope,sans-serif}
-    .block-actions{display:flex;gap:7px}.mini{border:1px solid var(--border);background:var(--card);color:var(--ink);border-radius:10px;padding:7px 10px;cursor:pointer}
-    .preview{position:sticky;top:18px}
-    .preview-card{border:1px solid var(--border);border-radius:20px;padding:20px;background:var(--bg);min-height:180px}
-    .preview-card h3{font-family:Manrope,sans-serif;font-size:1.7rem;margin:0 0 10px}
-    .preview-card p{color:var(--muted);line-height:1.7}
-    .status{margin-top:14px;padding:12px 14px;border-radius:14px;background:rgba(46,204,113,.10);border:1px solid rgba(46,204,113,.25);color:var(--ink);display:none}
-    .danger{background:rgba(220,53,69,.08);border-color:rgba(220,53,69,.2)}
-    .empty{border:1px dashed var(--border);border-radius:18px;padding:24px;text-align:center;color:var(--muted)}
-    .hint{font-size:.9rem;color:var(--muted);line-height:1.55}
-    @media(max-width:850px){.studio-grid{grid-template-columns:1fr}.preview{position:static}.two{grid-template-columns:1fr}}
-  </style>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/admin.css"
+  >
+
 </head>
+
 <body>
-<div class="app-shell">
-<header class="site-header">
-  <a class="brand" href="index.html"><span class="brand-mark">Q</span><span>Quoriya</span></a>
-  <div></div>
-  <nav class="header-actions">
-    <a href="index.html">Explore</a>
-    <button class="icon-btn" id="themeToggle" type="button">☾</button>
-  </nav>
-</header>
 
-<main class="studio">
-  <div class="studio-kicker">Content Studio</div>
-  <h1>Create richer knowledge.</h1>
-  <p class="studio-lead">Build a topic from reusable blocks, preview it, then export the complete <code>topics.json</code>. This browser-only studio never stores a GitHub token.</p>
+<div class="admin-shell">
 
-  <div class="studio-grid">
-    <section class="panel">
-      <h2>Topic details</h2>
-      <div class="two">
-        <div class="field"><label for="title">Title</label><input id="title" placeholder="e.g. Curvature"></div>
-        <div class="field"><label for="id">Topic ID</label><input id="id" placeholder="e.g. curvature"></div>
-      </div>
-      <div class="two">
-        <div class="field"><label for="category">Category</label><input id="category" placeholder="Mathematics"></div>
-        <div class="field"><label for="type">Type</label><input id="type" placeholder="Concept guide"></div>
-      </div>
-      <div class="two">
-        <div class="field"><label for="readTime">Read time</label><input id="readTime" placeholder="8 min"></div>
-        <div class="field"><label for="icon">Icon</label><input id="icon" placeholder="∿"></div>
-      </div>
-      <div class="field"><label for="description">Description</label><textarea id="description" placeholder="What will the reader understand?"></textarea></div>
-      <div class="field"><label for="tags">Tags <span class="hint">(comma separated)</span></label><input id="tags" placeholder="calculus, geometry, visual"></div>
-      <div class="field"><label for="related">Related topic IDs <span class="hint">(comma separated)</span></label><input id="related" placeholder="expected-value, sequences"></div>
+  <!-- LOGIN -->
 
-      <h2 style="margin-top:28px">Content blocks</h2>
-      <p class="hint">Add only the blocks that make sense for this topic. You don't need every block.</p>
-      <div class="toolbar">
-        <button class="btn btn-primary" data-add="text">+ Explanation</button>
-        <button class="btn btn-ghost" data-add="formula">+ Formula</button>
-        <button class="btn btn-ghost" data-add="note">+ Note</button>
-        <button class="btn btn-ghost" data-add="story">+ Storyboard</button>
-        <button class="btn btn-ghost" data-add="problem">+ Problem</button>
-        <button class="btn btn-ghost" data-add="gallery">+ Image carousel</button>
-        <button class="btn btn-ghost" data-add="media">+ Video / audio</button>
-      </div>
-      <div id="blocks"></div>
-      <div id="empty" class="empty">No blocks yet. Add an Explanation, Formula, Storyboard, Problem, media block, or anything else that fits the topic.</div>
+  <section id="loginView" class="login-view">
 
-      <div class="toolbar" style="margin-top:22px">
-        <button class="btn btn-primary" id="saveTopic">Add / update topic</button>
-        <button class="btn btn-ghost" id="copyJson">Copy JSON</button>
-        <button class="btn btn-ghost" id="downloadJson">Download topics.json</button>
-        <button class="btn btn-ghost" id="newTopic">New topic</button>
-      </div>
-      <div id="status" class="status"></div>
-    </section>
+    <div class="login-card">
 
-    <aside class="panel preview">
-      <h2>Live preview</h2>
-      <div id="preview" class="preview-card">
-        <h3>Your topic</h3>
-        <p>Fill in the title and description. Your content structure will appear here as you build it.</p>
+      <div class="brand admin-brand">
+
+        <span class="brand-mark">Q</span>
+
+        <span>Quoriya</span>
+
       </div>
-      <p class="hint" style="margin-top:16px"><strong>Publishing now:</strong> download the generated <code>topics.json</code>, then replace <code>data/topics.json</code> in your GitHub repository. A future secure backend can automate this without exposing credentials.</p>
-    </aside>
+
+      <span class="eyebrow">
+        Content Studio
+      </span>
+
+      <h1>
+        Welcome back.
+      </h1>
+
+      <p>
+        Sign in to create, edit and publish Quoriya topics.
+      </p>
+
+      <form id="loginForm">
+
+        <label>
+          Email
+
+          <input
+            id="loginEmail"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="you@example.com"
+          >
+
+        </label>
+
+        <label>
+          Password
+
+          <input
+            id="loginPassword"
+            type="password"
+            required
+            autocomplete="current-password"
+            placeholder="Your password"
+          >
+
+        </label>
+
+        <button
+          class="admin-primary"
+          type="submit"
+        >
+          Sign in
+        </button>
+
+      </form>
+
+      <button
+        id="resetPassword"
+        class="text-button"
+        type="button"
+      >
+        Forgot password?
+      </button>
+
+      <p
+        id="loginMessage"
+        class="admin-message"
+      ></p>
+
+    </div>
+
+  </section>
+
+
+  <!-- STUDIO -->
+
+  <section
+    id="studioView"
+    class="studio-view"
+    hidden
+  >
+
+    <header class="studio-header">
+
+      <div>
+
+        <div class="brand">
+
+          <span class="brand-mark">Q</span>
+
+          <span>Quoriya</span>
+
+        </div>
+
+        <p class="studio-subtitle">
+          Real Content Studio
+        </p>
+
+      </div>
+
+      <div class="studio-user">
+
+        <span id="currentUser"></span>
+
+        <button
+          id="logoutButton"
+          class="admin-secondary"
+          type="button"
+        >
+          Logout
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <main class="studio-main">
+
+      <!-- SIDEBAR -->
+
+      <aside class="studio-sidebar">
+
+        <button
+          id="newTopicButton"
+          class="admin-primary"
+          type="button"
+        >
+          + New topic
+        </button>
+
+        <div class="studio-filter">
+
+          <input
+            id="topicSearch"
+            type="search"
+            placeholder="Search topics..."
+          >
+
+        </div>
+
+        <div
+          id="topicList"
+          class="topic-list"
+        ></div>
+
+      </aside>
+
+
+      <!-- EDITOR -->
+
+      <section class="editor-area">
+
+        <div class="editor-toolbar">
+
+          <div>
+
+            <span class="eyebrow">
+              Topic editor
+            </span>
+
+            <h1 id="editorHeading">
+              Create a topic
+            </h1>
+
+          </div>
+
+          <div class="toolbar-actions">
+
+            <button
+              id="previewButton"
+              class="admin-secondary"
+              type="button"
+            >
+              Preview
+            </button>
+
+            <button
+              id="saveDraftButton"
+              class="admin-secondary"
+              type="button"
+            >
+              Save draft
+            </button>
+
+            <button
+              id="publishButton"
+              class="admin-primary"
+              type="button"
+            >
+              Publish
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <form id="topicForm" class="topic-form">
+
+          <input
+            id="topicDocumentId"
+            type="hidden"
+          >
+
+
+          <div class="form-grid">
+
+            <label>
+              Title
+
+              <input
+                id="topicTitle"
+                type="text"
+                required
+                placeholder="Curvature"
+              >
+
+            </label>
+
+
+            <label>
+              Topic ID
+
+              <input
+                id="topicId"
+                type="text"
+                required
+                placeholder="curvature"
+              >
+
+            </label>
+
+
+            <label>
+              Category
+
+              <input
+                id="topicCategory"
+                type="text"
+                value="Mathematics"
+              >
+
+            </label>
+
+
+            <label>
+              Type
+
+              <select id="topicType">
+
+                <option>
+                  Concept guide
+                </option>
+
+                <option>
+                  Visual lesson
+                </option>
+
+                <option>
+                  Problem set
+                </option>
+
+                <option>
+                  Formula guide
+                </option>
+
+                <option>
+                  General guide
+                </option>
+
+              </select>
+
+            </label>
+
+
+            <label>
+              Read time
+
+              <input
+                id="topicReadTime"
+                type="text"
+                value="8 min"
+              >
+
+            </label>
+
+
+            <label>
+              Tags
+
+              <input
+                id="topicTags"
+                type="text"
+                placeholder="calculus, geometry, visual"
+              >
+
+            </label>
+
+          </div>
+
+
+          <label>
+
+            Description
+
+            <textarea
+              id="topicDescription"
+              rows="4"
+              placeholder="What will the learner understand?"
+            ></textarea>
+
+          </label>
+
+
+          <label>
+
+            Related topic IDs
+
+            <input
+              id="topicRelated"
+              type="text"
+              placeholder="derivatives, differential-calculus"
+            >
+
+          </label>
+
+
+          <!-- CONTENT BLOCKS -->
+
+          <section class="blocks-section">
+
+            <div class="blocks-header">
+
+              <div>
+
+                <span class="eyebrow">
+                  Content
+                </span>
+
+                <h2>
+                  Learning blocks
+                </h2>
+
+              </div>
+
+              <div class="block-buttons">
+
+                <button
+                  type="button"
+                  data-add-block="text"
+                  class="block-add"
+                >
+                  + Explanation
+                </button>
+
+                <button
+                  type="button"
+                  data-add-block="formula"
+                  class="block-add"
+                >
+                  + Formula
+                </button>
+
+                <button
+                  type="button"
+                  data-add-block="note"
+                  class="block-add"
+                >
+                  + Note
+                </button>
+
+                <button
+                  type="button"
+                  data-add-block="story"
+                  class="block-add"
+                >
+                  + Story
+                </button>
+
+                <button
+                  type="button"
+                  data-add-block="problem"
+                  class="block-add"
+                >
+                  + Problem
+                </button>
+
+                <button
+                  type="button"
+                  data-add-block="gallery"
+                  class="block-add"
+                >
+                  + Gallery
+                </button>
+
+                <button
+                  type="button"
+                  data-add-block="media"
+                  class="block-add"
+                >
+                  + Media
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div
+              id="blocksContainer"
+              class="blocks-container"
+            >
+
+              <div class="empty-blocks">
+                Add an Explanation, Formula, Story, Problem or media block.
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <div
+            id="editorMessage"
+            class="editor-message"
+          ></div>
+
+        </form>
+
+      </section>
+
+    </main>
+
+  </section>
+
+</div>
+
+
+<!-- PREVIEW MODAL -->
+
+<div
+  id="previewModal"
+  class="preview-modal"
+  hidden
+>
+
+  <div class="preview-window">
+
+    <div class="preview-header">
+
+      <strong>
+        Topic Preview
+      </strong>
+
+      <button
+        id="closePreview"
+        class="admin-secondary"
+        type="button"
+      >
+        Close
+      </button>
+
+    </div>
+
+    <iframe
+      id="previewFrame"
+      title="Topic preview"
+    ></iframe>
+
   </div>
-</main>
 
-<script>
-(() => {
-  const $ = id => document.getElementById(id);
-  const blocks = [];
-  let topicsData = {categories:["All"],topics:[]};
+</div>
 
-  const escapeHtml = v => String(v ?? '').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-  const slug = v => String(v||'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
-  function setupTheme(){
-    if(localStorage.getItem('quoriya-theme')==='dark') document.body.classList.add('dark');
-    $('themeToggle').onclick=()=>{document.body.classList.toggle('dark');localStorage.setItem('quoriya-theme',document.body.classList.contains('dark')?'dark':'light');};
-  }
+<script
+  type="module"
+  src="js/admin.js"
+></script>
 
-  async function loadTopics(){
-    try{
-      const r=await fetch('data/topics.json',{cache:'no-store'});
-      if(r.ok) topicsData=await r.json();
-    }catch(e){}
-  }
-
-  function field(label,key,value='',placeholder=''){
-    return `<div class="field"><label>${label}</label><input data-key="${key}" value="${escapeHtml(value)}" placeholder="${escapeHtml(placeholder)}"></div>`;
-  }
-  function area(label,key,value='',placeholder=''){
-    return `<div class="field"><label>${label}</label><textarea data-key="${key}" placeholder="${escapeHtml(placeholder)}">${escapeHtml(value)}</textarea></div>`;
-  }
-
-  function addBlock(type,data={}){
-    blocks.push({type,...data});
-    renderBlocks();
-    renderPreview();
-  }
-
-  function renderBlocks(){
-    $('empty').style.display=blocks.length?'none':'block';
-    $('blocks').innerHTML=blocks.map((b,i)=>{
-      let body='';
-      if(b.type==='text') body=field('Heading','title',b.title||'','What is the main idea?')+area('Paragraphs — one paragraph per line','paragraphs', (b.paragraphs||[]).join('\n'),'Explain the concept clearly...');
-      if(b.type==='formula') body=field('Heading','title',b.title||'','Formula')+field('Formula (plain text or LaTeX)','formula',b.formula||'','e.g. \\\\kappa = 1/\\\\rho')+area('Explanation','explanation',b.explanation||'','Explain each symbol and why the formula matters.');
-      if(b.type==='note') body=field('Heading','title',b.title||'','Key idea')+area('Note','text',b.text||'','Important point, warning, or common mistake.');
-      if(b.type==='story') body=field('Heading','title',b.title||'','Build the intuition')+area('Steps — one step per line as Title | explanation','steps', (b.steps||[]).map(s=>`${s.title} | ${s.text}`).join('\n'),'Move along the curve | Watch the tangent direction change...');
-      if(b.type==='problem') body=field('Heading','title',b.title||'','Quick check')+area('Question','question',b.question||'','Write the problem.')+area('Hint','hint',b.hint||'','Give a useful hint without revealing the answer.')+area('Solution','solution',b.solution||'','Show the correct solution.');
-      if(b.type==='gallery') body=field('Heading','title',b.title||'','Visual gallery')+area('Images — one per line as URL | alt | caption','items',(b.items||[]).map(x=>`${x.src} | ${x.alt||''} | ${x.caption||''}`).join('\n'),'assets/images/example.png | Diagram | Caption');
-      if(b.type==='media') body=field('Heading','title',b.title||'','Video or audio')+field('Kind','kind',b.kind||'video','video or audio')+field('Media URL / path','src',b.src||'','assets/videos/example.mp4 or https://...')+area('Caption','caption',b.caption||'','What should the learner notice?');
-      return `<article class="block" data-index="${i}"><div class="block-head"><strong>${b.type.toUpperCase()}</strong><div class="block-actions"><button class="mini" data-up="${i}" type="button">↑</button><button class="mini" data-down="${i}" type="button">↓</button><button class="mini" data-remove="${i}" type="button">Remove</button></div></div>${body}</article>`;
-    }).join('');
-
-    $('blocks').querySelectorAll('.block').forEach(el=>{
-      const i=Number(el.dataset.index);
-      el.querySelectorAll('[data-key]').forEach(input=>{
-        input.addEventListener('input',()=>{
-          const key=input.dataset.key;
-          blocks[i][key]=input.value;
-          if(key==='paragraphs') blocks[i][key]=input.value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
-          if(key==='steps') blocks[i][key]=input.value.split(/\n+/).map(line=>{const [title,...rest]=line.split('|');return {title:(title||'').trim(),text:rest.join('|').trim()};}).filter(x=>x.title||x.text);
-          if(key==='items') blocks[i][key]=input.value.split(/\n+/).map(line=>{const [src,alt='',caption='']=line.split('|');return {src:(src||'').trim(),alt:alt.trim(),caption:caption.trim()};}).filter(x=>x.src);
-          renderPreview();
-        });
-      });
-    });
-    $('blocks').querySelectorAll('[data-remove]').forEach(btn=>btn.onclick=()=>{blocks.splice(Number(btn.dataset.remove),1);renderBlocks();renderPreview();});
-    $('blocks').querySelectorAll('[data-up]').forEach(btn=>btn.onclick=()=>{const i=Number(btn.dataset.up);if(i>0){[blocks[i-1],blocks[i]]=[blocks[i],blocks[i-1]];renderBlocks();renderPreview();}});
-    $('blocks').querySelectorAll('[data-down]').forEach(btn=>btn.onclick=()=>{const i=Number(btn.dataset.down);if(i<blocks.length-1){[blocks[i+1],blocks[i]]=[blocks[i],blocks[i+1]];renderBlocks();renderPreview();}});
-  }
-
-  function collectTopic(){
-    const title=$('title').value.trim();
-    return {
-      id: slug($('id').value || title),
-      title,
-      category:$('category').value.trim() || 'General',
-      description:$('description').value.trim(),
-      icon:$('icon').value.trim() || 'Q',
-      type:$('type').value.trim() || 'Guide',
-      readTime:$('readTime').value.trim() || '5 min',
-      tags:$('tags').value.split(',').map(x=>x.trim()).filter(Boolean),
-      related:$('related').value.split(',').map(x=>x.trim()).filter(Boolean),
-      blocks:blocks.map(b=>({...b}))
-    };
-  }
-
-  function renderPreview(){
-    const t=collectTopic();
-    $('preview').innerHTML=`<div class="studio-kicker">${escapeHtml(t.category)} · ${escapeHtml(t.type)}</div><h3>${escapeHtml(t.title||'Your topic')}</h3><p>${escapeHtml(t.description||'Your description will appear here.')}</p><hr><p><strong>${blocks.length}</strong> content block${blocks.length===1?'':'s'} · ${escapeHtml(t.readTime)}</p>`;
-  }
-
-  function flash(msg,danger=false){
-    const s=$('status');s.textContent=msg;s.className='status'+(danger?' danger':'');s.style.display='block';setTimeout(()=>s.style.display='none',4000);
-  }
-
-  function currentJson(){
-    const t=collectTopic();
-    const existing=(topicsData.topics||[]).filter(x=>x.id!==t.id);
-    const categories=new Set((topicsData.categories||[]).filter(x=>x!=='All'));
-    existing.forEach(x=>categories.add(x.category));
-    if(t.category) categories.add(t.category);
-    return {categories:['All',...Array.from(categories).sort()],topics:[...existing,t]};
-  }
-
-  $('blocks').addEventListener('click',()=>{});
-  document.querySelectorAll('[data-add]').forEach(btn=>btn.onclick=()=>addBlock(btn.dataset.add, btn.dataset.add==='media'?{kind:'video'}:{}));
-
-  $('saveTopic').onclick=()=>{
-    const t=collectTopic();
-    if(!t.title){flash('Add a topic title first.',true);return;}
-    if(!t.description){flash('Add a short description first.',true);return;}
-    topicsData=currentJson();
-    flash(`“${t.title}” is ready in the exported content set. Download topics.json and replace the GitHub data file.`);
-  };
-
-  $('copyJson').onclick=async()=>{
-    try{await navigator.clipboard.writeText(JSON.stringify(currentJson(),null,2));flash('Complete topics.json copied to clipboard.');}
-    catch(e){flash('Clipboard permission was blocked. Use Download topics.json instead.',true);}
-  };
-
-  $('downloadJson').onclick=()=>{
-    const blob=new Blob([JSON.stringify(currentJson(),null,2)],{type:'application/json'});
-    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='topics.json';a.click();URL.revokeObjectURL(a.href);
-    topicsData=currentJson();flash('topics.json downloaded. Upload it to data/topics.json in GitHub.');
-  };
-
-  $('newTopic').onclick=()=>{
-    ['title','id','description','tags','related'].forEach(id=>$(id).value='');
-    $('category').value='';$('type').value='';$('readTime').value='';$('icon').value='';blocks.length=0;renderBlocks();renderPreview();window.scrollTo({top:0,behavior:'smooth'});
-  };
-
-  ['title','id','category','type','readTime','icon','description','tags','related'].forEach(id=>$(id).addEventListener('input',renderPreview));
-  setupTheme();
-  loadTopics().then(renderPreview);
-})();
-</script>
 </body>
+
 </html>

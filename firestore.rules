@@ -1,0 +1,61 @@
+rules_version = '2';
+
+service cloud.firestore {
+
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+
+      return request.auth != null
+        &&
+        exists(
+          /databases/$(database)/documents/admins/$(request.auth.uid)
+        )
+        &&
+        get(
+          /databases/$(database)/documents/admins/$(request.auth.uid)
+        ).data.enabled == true;
+
+    }
+
+
+    match /admins/{userId} {
+
+      allow read:
+        if isAdmin() || request.auth.uid == userId;
+
+      allow write:
+        if false;
+
+    }
+
+
+    match /topics/{topicId} {
+
+      /*
+        Anyone can read only published topics.
+      */
+
+      allow read:
+        if resource.data.status == "published";
+
+
+      /*
+        Only authorized admins can create,
+        update and delete topics.
+      */
+
+      allow create:
+        if isAdmin();
+
+      allow update:
+        if isAdmin();
+
+      allow delete:
+        if isAdmin();
+
+    }
+
+  }
+
+}
